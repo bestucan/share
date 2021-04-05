@@ -1,0 +1,245 @@
+set terminal pdfcairo enhanced color size 70cm, 30cm font "Verdana, 30"
+set output "mode_log_pdf.pdf"
+
+# set key out vert
+# set key right top Left title 'Legend' box 3
+set key top Left
+
+######虚线 dt2
+# set style function linespoints
+set linetype 1   lc rgb "dark-violet" lw 1.5 dt 2 pt 5  pn 5   # ps .7
+set linetype 2   lc rgb "black"       lw 1.5 dt 2 pt 7  pn 5   # ps .7
+set linetype 3   lc rgb "violet"      lw 1.5 dt 2 pt 9  pn 5   # ps .7
+set linetype 4   lc rgb "dark-red"    lw 1.5 dt 2 pt 11 pn 5   # ps .7
+set linetype 5   lc rgb "blue"        lw 1.5 dt 2 pt 13 pn 5   # ps .7
+set linetype 6   lc rgb "dark-orange" lw 1.5 dt 2 pt 15 pn 5   # ps .7
+set linetype 7   lc rgb "sea-green"   lw 1.5 dt 2 pt 5  pn 5   # ps .7
+set linetype 8   lc rgb "goldenrod"   lw 1.5 dt 2 pt 7  pn 5   # ps .7
+set linetype 9   lc rgb "orchid"      lw 1.5 dt 2 pt 9  pn 5   # ps .7
+set linetype 10  lc rgb "dark-yellow" lw 1.5 dt 2 pt 11 pn 5   # ps .7
+set linetype 11  lc rgb "dark-violet" lw 1.5 dt 2 pt 13 pn 5   # ps .7
+set linetype 12  lc rgb "black"       lw 1.5 dt 2 pt 15 pn 5   # ps .7
+set linetype 13  lc rgb "violet"      lw 1.5 dt 2 pt 5  pn 5   # ps .7
+set linetype 14  lc rgb "dark-red"    lw 1.5 dt 2 pt 7  pn 5   # ps .7
+set linetype 15  lc rgb "blue"        lw 1.5 dt 2 pt 9  pn 5   # ps .7
+set linetype 16  lc rgb "dark-orange" lw 1.5 dt 2 pt 11 pn 5   # ps .7
+set linetype 17  lc rgb "sea-green"   lw 1.5 dt 2 pt 13 pn 5   # ps .7
+set linetype 18  lc rgb "goldenrod"   lw 1.5 dt 2 pt 15 pn 5   # ps .7
+set linetype 19  lc rgb "orchid"      lw 1.5 dt 2 pt 5  pn 5   # ps .7
+set linetype 20  lc rgb "dark-yellow" lw 1.5 dt 2 pt 7  pn 5   # ps .7
+set linetype 21  lc rgb "dark-violet" lw 1.5 dt 2 pt 9  pn 5   # ps .7
+set linetype 22  lc rgb "black"       lw 1.5 dt 2 pt 11 pn 5   # ps .7
+set linetype 23  lc rgb "violet"      lw 1.5 dt 2 pt 13 pn 5   # ps .7
+set linetype 24  lc rgb "dark-red"    lw 1.5 dt 2 pt 15 pn 5   # ps .7
+
+
+######实线 dt1
+set linetype 101 lc rgb "dark-violet" lw 1.5 dt 1 pt 4  pn 5   # ps .7
+set linetype 102 lc rgb "black"       lw 1.5 dt 1 pt 6  pn 5   # ps .7
+set linetype 103 lc rgb "violet"      lw 1.5 dt 1 pt 8  pn 5   # ps .7
+set linetype 104 lc rgb "dark-red"    lw 1.5 dt 1 pt 10 pn 5   # ps .7
+set linetype 105 lc rgb "blue"        lw 1.5 dt 1 pt 12 pn 5   # ps .7
+set linetype 106 lc rgb "dark-orange" lw 1.5 dt 1 pt 14 pn 5   # ps .7
+set linetype 107 lc rgb "sea-green"   lw 1.5 dt 1 pt 4  pn 5   # ps .7
+set linetype 108 lc rgb "goldenrod"   lw 1.5 dt 1 pt 6  pn 5   # ps .7
+set linetype 109 lc rgb "orchid"      lw 1.5 dt 1 pt 8  pn 5   # ps .7
+set linetype 110 lc rgb "dark-yellow" lw 1.5 dt 1 pt 10 pn 5   # ps .7
+set linetype 111 lc rgb "dark-violet" lw 1.5 dt 1 pt 12 pn 5   # ps .7
+set linetype 112 lc rgb "black"       lw 1.5 dt 1 pt 14 pn 5   # ps .7
+set linetype 113 lc rgb "violet"      lw 1.5 dt 1 pt 4  pn 5   # ps .7
+set linetype 114 lc rgb "dark-red"    lw 1.5 dt 1 pt 6  pn 5   # ps .7
+set linetype 115 lc rgb "blue"        lw 1.5 dt 1 pt 8  pn 5   # ps .7
+set linetype 116 lc rgb "dark-orange" lw 1.5 dt 1 pt 10 pn 5   # ps .7
+set linetype 117 lc rgb "sea-green"   lw 1.5 dt 1 pt 12 pn 5   # ps .7
+set linetype 118 lc rgb "goldenrod"   lw 1.5 dt 1 pt 14 pn 5   # ps .7
+set linetype 119 lc rgb "orchid"      lw 1.5 dt 1 pt 4  pn 5   # ps .7
+set linetype 120 lc rgb "dark-yellow" lw 1.5 dt 1 pt 6  pn 5   # ps .7
+set linetype 121 lc rgb "dark-violet" lw 1.5 dt 1 pt 8  pn 5   # ps .7
+set linetype 122 lc rgb "black"       lw 1.5 dt 1 pt 10 pn 5   # ps .7
+set linetype 123 lc rgb "violet"      lw 1.5 dt 1 pt 12 pn 5   # ps .7
+set linetype 124 lc rgb "dark-red"    lw 1.5 dt 1 pt 14 pn 5   # ps .7
+
+array sigma_g[3*6]=[1.80, 1.87, 1.70,\
+      		    1.90, 1.93, 1.58,\
+		    2.00, 2.00, 1.71,\
+		    2.00, 1.99, 1.59,\
+		    1.92, 2.00, 1.64,\
+		    1.89, 1.96, 1.54]
+
+
+array vg[3*6]=[1.949816e-24, 1.153744e-22, 4.188790e-21,\
+               2.572441e-24, 2.772325e-22, 7.700109e-21,\
+               1.563458e-24, 1.069903e-22, 2.758331e-21,\
+               3.053628e-24, 2.280375e-22, 8.279799e-21,\
+               1.531111e-24, 1.235845e-22, 5.964117e-21,\
+               3.423919e-24, 3.170368e-22, 7.700109e-21]
+
+
+array parMod[3] = ["acc", "nuc", "ait"]
+
+array clean[2] = ["no", "po"]
+array clean_pre[2] = ["po", "no"]
+
+
+
+# sigma = wg = 3ln(sigma g)
+# mu = ln(vg)
+
+sigma_nuc = 3 * log(sigma_g[1])
+sigma_ait = 3 * log(sigma_g[2])
+sigma_acc = 3 * log(sigma_g[3])
+
+mu_nuc = log(vg[1])
+mu_ait = log(vg[2])
+mu_acc = log(vg[3])
+
+invsqrt2pi = 0.398942280401433
+
+lognormal_comb(x) = invsqrt2pi / sigma_nuc / x * exp(-0.5 * ((log(x) - mu_nuc) / sigma_nuc)**2)\
+		  + invsqrt2pi / sigma_ait / x * exp(-0.5 * ((log(x) - mu_ait) / sigma_ait)**2)\
+		  + invsqrt2pi / sigma_acc / x * exp(-0.5 * ((log(x) - mu_acc) / sigma_acc)**2)
+
+
+sigma = 3 * log(sigma_g[1])
+mu = log(vg[1])
+
+lognormal(x) = invsqrt2pi / sigma / x * exp(-0.5 * ((log(x) - mu) / sigma)**2)
+
+####################################range#######################################
+m = exp(mu_nuc + 0.5 * sigma_nuc**2)
+s = sqrt(exp(2.0 * mu_nuc + sigma_nuc**2) * (2.0 * exp(sigma_nuc) - 1.0))
+
+xmin = m - 6**160 * s
+xmin = xmin < 0 ? 0 : xmin
+xmax = m + 0.1 * s
+ymax = 1.1 * lognormal_comb(exp(mu_nuc - sigma_nuc**2))
+
+# set xrange [xmin: xmax]
+# set yrange [0: ymax]
+
+# set xrange [xmin: xmax]
+# set yrange [0: 4*10**(20)]
+
+# set xrange [xmin-10**(-24): xmax-4*10**(-22)]
+# set yrange [0: 1.7*10**(22)]
+
+#set xrange [xmin-10**(-25): xmax]
+#set yrange [0: 1.1*10**(24)]
+
+set xrange [10**(-36): 10**(-13)]
+set yrange [0: 10**(25)]
+
+################################################################################
+
+
+set format y '%.1e'
+set format x '%.1e'
+
+set logscale y
+set logscale x
+
+#set autoscale
+
+set sample 10000
+
+set xlabel "x ->"
+set ylabel "probability density ->"
+
+
+set title 'every year polluted and nonpolluted PDF'
+plot for [i = 1:2] sigma_nuc = 3 * log(sigma_g[(i-1)*3+1]), sigma_ait = 3 * log(sigma_g[(i-1)*3+1+1]), sigma_acc = 3 * log(sigma_g[(i-1)*3+1+2]), mu_nuc = log(vg[(i-1)*3+1]), mu_ait = log(vg[(i-1)*3+1+1]), mu_acc = log(vg[(i-1)*3+1+2]), lognormal_comb(x) with linespoint pn 5 lt ((i+1)%2)*100+1 title "2004"." ".clean[(i+1)%2+1],\
+ for [i = 3:4] sigma_nuc = 3 * log(sigma_g[(i-1)*3+1]), sigma_ait = 3 * log(sigma_g[(i-1)*3+1+1]), sigma_acc = 3 * log(sigma_g[(i-1)*3+1+2]), mu_nuc = log(vg[(i-1)*3+1]), mu_ait = log(vg[(i-1)*3+1+1]), mu_acc = log(vg[(i-1)*3+1+2]), lognormal_comb(x) with linespoint pn 5 lt ((i+1)%2)*100+2 title "2005"." ".clean[(i+1)%2+1],\
+ for [i = 5:6] sigma_nuc = 3 * log(sigma_g[(i-1)*3+1]), sigma_ait = 3 * log(sigma_g[(i-1)*3+1+1]), sigma_acc = 3 * log(sigma_g[(i-1)*3+1+2]), mu_nuc = log(vg[(i-1)*3+1]), mu_ait = log(vg[(i-1)*3+1+1]), mu_acc = log(vg[(i-1)*3+1+2]), lognormal_comb(x) with linespoint pn 5 lt ((i+1)%2)*100+3 title "2006"." ".clean[(i+1)%2+1]
+
+
+
+set title '2004 polluted and nonpolluted PDF'
+
+
+
+NOXTICS = "set xtics ('' 1e-35,'' 1e-30,'' 1e-25,'' 1e-20,'' 1e-15);\
+           unset xlabel;"
+XTICS = "set xtics ('1e-35' 1e-35,'1e-30' 1e-30,'1e-25' 1e-25,'1e-20' 1e-20,'1e-15' 1e-15);\
+         set xlabel 'diameter';"
+NOYTICS = "set ytics ('' 1e25,'' 1e20,'' 1e15,'' 1e10,'' 1e05, '' 1e0);\
+	   unset ylabel;"
+YTICS = "set ytics ('1.0e+25' 1e25,'1.0e+20' 1e20,'1.0e+15' 1e15,'1.0e+10' 1e10,'1.0e+5' 1e05, '1.0e+00' 1e0);\
+      	 set ylabel 'particles number ';"
+
+
+TMARGIN = "set tmargin at screen 0.90; set bmargin at screen 0.66;"
+MMARGIN = "set tmargin at screen 0.66; set bmargin at screen 0.42;"
+BMARGIN = "set tmargin at screen 0.18; set bmargin at screen 0.42;"
+
+
+unset title
+unset xlabel
+unset ylabel
+#unset key
+
+set multiplot layout 3,1 rowsfirst
+
+@TMARGIN
+@YTICS @NOXTICS
+#set label 1 '2004' at graph 0.85,0.9 font ',21'
+plot for [i = 1:2] sigma_nuc = 3 * log(sigma_g[(i-1)*3+1]), sigma_ait = 3 * log(sigma_g[(i-1)*3+1+1]), sigma_acc = 3 * log(sigma_g[(i-1)*3+1+2]), mu_nuc = log(vg[(i-1)*3+1]), mu_ait = log(vg[(i-1)*3+1+1]), mu_acc = log(vg[(i-1)*3+1+2]), lognormal_comb(x) with linespoint pn 5 lt ((i+1)%2)*100+1
+
+@MMARGIN
+@NOXTICS
+#set label 1 '2005' at graph 0.85,0.9 font ',21'
+plot for [i = 3:4] sigma_nuc = 3 * log(sigma_g[(i-1)*3+1]), sigma_ait = 3 * log(sigma_g[(i-1)*3+1+1]), sigma_acc = 3 * log(sigma_g[(i-1)*3+1+2]), mu_nuc = log(vg[(i-1)*3+1]), mu_ait = log(vg[(i-1)*3+1+1]), mu_acc = log(vg[(i-1)*3+1+2]), lognormal_comb(x) with linespoint pn 5 lt ((i+1)%2)*100+1
+
+@BMARGIN
+@XTICS
+#set label 1 '2006' at graph 0.85,0.9 font ',21'
+plot for [i = 5:6] sigma_nuc = 3 * log(sigma_g[(i-1)*3+1]), sigma_ait = 3 * log(sigma_g[(i-1)*3+1+1]), sigma_acc = 3 * log(sigma_g[(i-1)*3+1+2]), mu_nuc = log(vg[(i-1)*3+1]), mu_ait = log(vg[(i-1)*3+1+1]), mu_acc = log(vg[(i-1)*3+1+2]), lognormal_comb(x) with linespoint pn 5 lt ((i+1)%2)*100+1
+
+unset multiplot
+
+
+
+
+
+LMARGIN = "set lmargin at screen 0.11; set rmargin at screen 0.39;"
+MMARGIN = "set lmargin at screen 0.39; set rmargin at screen 0.67;"
+RMARGIN = "set lmargin at screen 0.67; set rmargin at screen 0.95;"
+
+set multiplot layout 1,3 rowsfirst
+
+@LMARGIN
+@YTICS @XTICS
+#set label 1 '2004' at graph 0.85,0.9 font ',28'
+plot for [i = 1:2] sigma_nuc = 3 * log(sigma_g[(i-1)*3+1]), sigma_ait = 3 * log(sigma_g[(i-1)*3+1+1]), sigma_acc = 3 * log(sigma_g[(i-1)*3+1+2]), mu_nuc = log(vg[(i-1)*3+1]), mu_ait = log(vg[(i-1)*3+1+1]), mu_acc = log(vg[(i-1)*3+1+2]), lognormal_comb(x) with linespoint pn 5 lt ((i+1)%2)*100+1 title "2004"." ".clean[(i+1)%2+1]
+
+@MMARGIN
+@NOYTICS
+#set label 1 '2005' at graph 0.85,0.9 font ',28'
+plot for [i = 3:4] sigma_nuc = 3 * log(sigma_g[(i-1)*3+1]), sigma_ait = 3 * log(sigma_g[(i-1)*3+1+1]), sigma_acc = 3 * log(sigma_g[(i-1)*3+1+2]), mu_nuc = log(vg[(i-1)*3+1]), mu_ait = log(vg[(i-1)*3+1+1]), mu_acc = log(vg[(i-1)*3+1+2]), lognormal_comb(x) with linespoint pn 5 lt ((i+1)%2)*100+1 title "2005"." ".clean[(i+1)%2+1]
+
+@RMARGIN
+@NOYTICS
+#set label 1 '2006' at graph 0.85,0.9 font ',28'
+plot for [i = 5:6] sigma_nuc = 3 * log(sigma_g[(i-1)*3+1]), sigma_ait = 3 * log(sigma_g[(i-1)*3+1+1]), sigma_acc = 3 * log(sigma_g[(i-1)*3+1+2]), mu_nuc = log(vg[(i-1)*3+1]), mu_ait = log(vg[(i-1)*3+1+1]), mu_acc = log(vg[(i-1)*3+1+2]), lognormal_comb(x) with linespoint pn 5 lt ((i+1)%2)*100+1 title "2006"." ".clean[(i+1)%2+1]
+
+unset multiplot
+
+
+
+
+
+set key out top Left
+unset lmargin
+unset rmargin
+unset label
+
+
+
+
+set title '2004 polluted and nonpolluted PDF'
+plot for [i = 1 :6 ] sigma = 3 * log(sigma_g[i]), mu = log(vg[i]), lognormal(x) with linespoint pn 5 lt ((i-1)/3)*100+i title "2004"." ".clean[(i-1)/3+1]." ".parMod[i%3+1]
+
+set title '2004 polluted and nonpolluted PDF'
+plot for [i = 7 :12 ] sigma = 3 * log(sigma_g[i]), mu = log(vg[i]), lognormal(x) with linespoint pn 5 lt ((i-6-1)/3)*100+i title "2005"." ".clean[(i-7)/3+1]." ".parMod[i%3+1]
+
+set title '2004 polluted and nonpolluted PDF'
+plot for [i = 13 :18 ] sigma = 3 * log(sigma_g[i]), mu = log(vg[i]), lognormal(x) with linespoint pn 5 lt ((i-12-1)/3)*100+i title "2006"." ".clean[(i-13)/3+1]." ".parMod[i%3+1]

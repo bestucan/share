@@ -1,0 +1,516 @@
+#set terminal postscript eps enhanced color
+#set output "udm8_scale_same.eps"
+
+set terminal pdfcairo enhanced color size 45cm, 30cm font "Verdana, 30"
+set output "result_MVyes_inVno_aver_vg_percent_n-p.pdf"
+
+#set terminal epslatex size 45cm, 30cm color colortext standalone
+#set output "result_MVyes_inVno_aver_vg_percent_n-p.tex"
+
+
+#set terminal pngcairo
+#set output "udm8_scale_same.png"
+
+
+array distance[8] = ["0.1", "0.5", "1.0", "1.5", "2.0", "3.0", "5.0", "7.0"]
+
+array start[8] = [24,  719,  1414, 2109, 2804, 3499, 4194, 4889]
+array end[8]   = [368, 1063, 1758, 2453, 3148, 3843, 4538, 5233]
+getData(fName, n) = sprintf("<(sed -n '%d,%dp' %s)", start[n], end[n], fName)
+
+
+array clean[3] = ["po", "no", "BGno"]
+
+fileName(year, i) = sprintf("origin_fluid_%s%s.dat", year, clean[i])
+
+comData(n, year) = sprintf("<(paste %s %s |sed -n '%d,%dp')", fileName(year, 1), fileName(year, 2), start[n], end[n])
+
+
+
+
+#uds0 = "using 2:12"
+#uds1 = "using 2:15"
+#uds2 = "using 2:5"
+#uds3 = "using 2:8"
+#uds4 = "using 2:11"
+#
+#udm0 = "using 2:13"
+#udm1 = "using 2:14"
+#udm2 = "using 2:16"
+#udm3 = "using 2:4"
+#udm4 = "using 2:6"
+#udm5 = "using 2:7"
+#udm6 = "using 2:9"
+#udm7 = "using 2:10"
+
+
+uds0 = "using 2:(100*($12-$28)/$28)"
+uds1 = "using 2:(100*($15-$31)/$31)"
+uds2 = "using 2:(100*($5 -$21)/$21)"
+uds3 = "using 2:(100*($8 -$24)/$24)"
+uds4 = "using 2:(100*($11-$27)/$27)"
+udm0 = "using 2:(100*($13-$29)/$29)"
+udm1 = "using 2:(100*($14-$30)/$30)"
+udm2 = "using 2:(100*($16-$32)/$32)"
+udm3 = "using 2:(100*($4 -$20)/$20)"
+udm4 = "using 2:(100*($6 -$22)/$22)"
+udm5 = "using 2:(100*($7 -$23)/$23)"
+udm6 = "using 2:(100*($9 -$25)/$25)"
+udm7 = "using 2:(100*($10-$26)/$26)"
+
+
+
+set dashtype 2 (20,10,2,4,2,10)
+
+#set style function linespoints
+
+
+set linetype 1   lc rgb '#440154' lw 1.5 dt 1 pt 1  pn 5   # ps .7 # dark purple
+set linetype 2   lc rgb '#440154' lw 1.5 dt 1 pt 3  pn 5   # ps .7
+set linetype 3   lc rgb '#440154' lw 1.5 dt 1 pt 5  pn 5   # ps .7
+set linetype 4   lc rgb '#440154' lw 1.5 dt 1 pt 7  pn 5   # ps .7
+set linetype 5   lc rgb '#440154' lw 1.5 dt 1 pt 9  pn 5   # ps .7
+set linetype 6   lc rgb '#440154' lw 1.5 dt 1 pt 11 pn 5   # ps .7
+set linetype 7   lc rgb '#440154' lw 1.5 dt 1 pt 13 pn 5   # ps .7
+set linetype 8   lc rgb '#440154' lw 1.5 dt 1 pt 15 pn 5   # ps .7
+set linetype 9   lc rgb '#21908d' lw 1.5 dt 1 pt 1  pn 5   # ps .7 # blue-green
+set linetype 10  lc rgb '#21908d' lw 1.5 dt 1 pt 3  pn 5   # ps .7
+set linetype 11  lc rgb '#21908d' lw 1.5 dt 1 pt 5  pn 5   # ps .7
+set linetype 12  lc rgb '#21908d' lw 1.5 dt 1 pt 7  pn 5   # ps .7
+set linetype 13  lc rgb '#21908d' lw 1.5 dt 1 pt 9  pn 5   # ps .7
+set linetype 14  lc rgb '#21908d' lw 1.5 dt 1 pt 11 pn 5   # ps .7
+set linetype 15  lc rgb '#21908d' lw 1.5 dt 1 pt 13 pn 5   # ps .7
+set linetype 16  lc rgb '#21908d' lw 1.5 dt 1 pt 15 pn 5   # ps .7
+set linetype 17  lc rgb '#aadc32' lw 1.5 dt 1 pt 1  pn 5   # ps .7 # lime green
+set linetype 18  lc rgb '#aadc32' lw 1.5 dt 1 pt 3  pn 5   # ps .7
+set linetype 19  lc rgb '#aadc32' lw 1.5 dt 1 pt 5  pn 5   # ps .7
+set linetype 20  lc rgb '#aadc32' lw 1.5 dt 1 pt 7  pn 5   # ps .7
+set linetype 21  lc rgb '#aadc32' lw 1.5 dt 1 pt 9  pn 5   # ps .7
+set linetype 22  lc rgb '#aadc32' lw 1.5 dt 1 pt 11 pn 5   # ps .7
+set linetype 23  lc rgb '#aadc32' lw 1.5 dt 1 pt 13 pn 5   # ps .7
+set linetype 24  lc rgb '#aadc32' lw 1.5 dt 1 pt 15 pn 5   # ps .7
+
+
+
+set linetype 101  lc rgb '#440154' lw 1.5 dt 2 pt 0  pn 5   # ps .7
+set linetype 102  lc rgb '#440154' lw 1.5 dt 2 pt 2  pn 5   # ps .7
+set linetype 103  lc rgb '#440154' lw 1.5 dt 2 pt 4  pn 5   # ps .7
+set linetype 104  lc rgb '#440154' lw 1.5 dt 2 pt 6  pn 5   # ps .7
+set linetype 105  lc rgb '#440154' lw 1.5 dt 2 pt 8  pn 5   # ps .7
+set linetype 106  lc rgb '#440154' lw 1.5 dt 2 pt 10 pn 5   # ps .7
+set linetype 107  lc rgb '#440154' lw 1.5 dt 2 pt 12 pn 5   # ps .7
+set linetype 108  lc rgb '#440154' lw 1.5 dt 2 pt 14 pn 5   # ps .7
+set linetype 109  lc rgb '#21908d' lw 1.5 dt 2 pt 0  pn 5   # ps .7
+set linetype 110  lc rgb '#21908d' lw 1.5 dt 2 pt 2  pn 5   # ps .7
+set linetype 111  lc rgb '#21908d' lw 1.5 dt 2 pt 4  pn 5   # ps .7
+set linetype 112  lc rgb '#21908d' lw 1.5 dt 2 pt 6  pn 5   # ps .7
+set linetype 113  lc rgb '#21908d' lw 1.5 dt 2 pt 8  pn 5   # ps .7
+set linetype 114  lc rgb '#21908d' lw 1.5 dt 2 pt 10 pn 5   # ps .7
+set linetype 115  lc rgb '#21908d' lw 1.5 dt 2 pt 12 pn 5   # ps .7
+set linetype 116  lc rgb '#21908d' lw 1.5 dt 2 pt 14 pn 5   # ps .7
+set linetype 117  lc rgb '#aadc32' lw 1.5 dt 2 pt 0  pn 5   # ps .7
+set linetype 118  lc rgb '#aadc32' lw 1.5 dt 2 pt 2  pn 5   # ps .7
+set linetype 119  lc rgb '#aadc32' lw 1.5 dt 2 pt 4  pn 5   # ps .7
+set linetype 120  lc rgb '#aadc32' lw 1.5 dt 2 pt 6  pn 5   # ps .7
+set linetype 121  lc rgb '#aadc32' lw 1.5 dt 2 pt 8  pn 5   # ps .7
+set linetype 122  lc rgb '#aadc32' lw 1.5 dt 2 pt 10 pn 5   # ps .7
+set linetype 123  lc rgb '#aadc32' lw 1.5 dt 2 pt 12 pn 5   # ps .7
+set linetype 124  lc rgb '#aadc32' lw 1.5 dt 2 pt 14 pn 5   # ps .7
+
+#set linetype cycle 20
+
+
+# line <-> linspoint pn 5
+
+
+set xlabel 'y'
+set key out vert
+#set key left bottom box opaque
+
+set logscale x 10
+#set logscale y 10
+
+#set format x '10^{%L}'
+#set format y '10^{%L}'
+
+set format y '%.1e'
+
+set xrange [10**(-2):3.5]
+#set yrange [0.2:1]
+
+####################################
+# atmospheric pressure             #
+#                                  #
+####################################
+
+set yrange [-2*10**(-4):2*10**(-4)]
+#####################################是否污染不变
+set ylabel 'atmospheric pressure'
+set title 'every year every distance polluted atmospheric pressure'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @uds0 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################年份不变
+set title '2004 every distance polluted and nonpolluted atmospheric pressure'
+plot for [year in "2004"] for [i = 1:8] comData(i, year) @uds0 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted atmospheric pressure'
+plot for [year in "2005"] for [i = 1:8] comData(i, year) @uds0 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted atmospheric pressure'
+plot for [year in "2006"] for [i = 1:8] comData(i, year) @uds0 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted atmospheric pressure"
+   plot for [year in "2004 2005 2006"] comData(i, year) @uds0 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+####################################
+# concentration of sulfuric        #
+#                                  #
+####################################
+
+set yrange [-1*10**(-1):2*10**(-1)]
+# set autoscale
+####################################是否污染不变
+set ylabel 'concentration of sulfuric'
+set title 'every year every distance polluted concentration of sulfuric'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @uds1 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################年份不变
+set title '2004 every distance polluted and nonpolluted concentration of sulfuric'
+plot for [year in "2004"] for [i = 1:8] comData(i, year)  @uds1 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted concentration of sulfuric'
+plot for [year in "2005"] for [i = 1:8] comData(i, year)  @uds1 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted concentration of sulfuric'
+plot for [year in "2006"] for [i = 1:8] comData(i, year)  @uds1 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted concentration of sulfuric"
+   plot for [year in "2004 2005 2006"] comData(i, year) @uds1 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+####################################
+# M0                               #
+#                                  #
+####################################
+
+set yrange [-1.5*10**(1):2*10**(0)]
+# set autoscale
+####################################是否污染不变
+set ylabel 'M_0'
+set title 'every year every distance polluted M_0'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @uds2 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################年份不变
+set title '2004 every distance polluted and nonpolluted M_0'
+plot for [year in "2004"] for [i = 1:8] comData(i, year)  @uds2 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted M_0'
+plot for [year in "2005"] for [i = 1:8] comData(i, year)  @uds2 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted M_0'
+plot for [year in "2006"] for [i = 1:8] comData(i, year)  @uds2 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted M_0"
+   plot for [year in "2004 2005 2006"] comData(i, year) @uds2 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+####################################
+# M1                               #
+#                                  #
+####################################
+set yrange [-0.5*10**(1):2.2*10**(2)]
+# set autoscale
+
+####################################是否污染不变
+set ylabel 'M_1'
+set title 'every year every distance polluted M_1'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @uds3 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################年份不变
+set title '2004 every distance polluted and nonpolluted M_1'
+plot for [year in "2004"] for [i = 1:8] comData(i, year)  @uds3 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted M_1'
+plot for [year in "2005"] for [i = 1:8] comData(i, year)  @uds3 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted M_1'
+plot for [year in "2006"] for [i = 1:8] comData(i, year)  @uds3 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+###################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted M_1"
+   plot for [year in "2004 2005 2006"] comData(i, year) @uds3 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+####################################
+# M2                               #
+#                                  #
+####################################
+
+set yrange [-0.5*10**(1):3*10**(2)]
+# set autoscale
+
+####################################是否污染不变
+set ylabel 'M_2'
+set title 'every year every distance polluted M_2'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @uds4 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################年份不变
+set title '2004 every distance polluted and nonpolluted M_2'
+plot for [year in "2004"] for [i = 1:8] comData(i, year)  @uds4 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted M_2'
+plot for [year in "2005"] for [i = 1:8] comData(i, year)  @uds4 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted M_2'
+plot for [year in "2006"] for [i = 1:8] comData(i, year)  @uds4 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted M_2"
+   plot for [year in "2004 2005 2006"] comData(i, year) @uds4 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+
+
+
+
+####################################
+# relative humidity                #
+#                                  #
+####################################
+
+set yrange [-2*10**(-4):2*10**(-4)]
+# set autoscale
+
+####################################是否污染不变
+set ylabel 'relative humidity'
+set title 'every year every distance polluted relative humidity'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @udm0 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################年份不变
+set title '2004 every distance polluted and nonpolluted relative humidity'
+plot for [year in "2004"] for [i = 1:8] comData(i, year)  @udm0 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted relative humidity'
+plot for [year in "2005"] for [i = 1:8] comData(i, year)  @udm0 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted relative humidity'
+plot for [year in "2006"] for [i = 1:8] comData(i, year)  @udm0 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted relative humidity"
+   plot for [year in "2004 2005 2006"] comData(i, year) @udm0 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+
+
+####################################
+# nucleation rate                  #
+#                                  #
+####################################
+set yrange [-2*10**(-1):1.5*10**(0)]
+# set autoscale
+
+####################################是否污染不变
+set ylabel 'nucleation rate [1/cm^3s]'
+set title 'every year every distance polluted nucleation rate [1/cm^3s]'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @udm1 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################年份不变
+set title '2004 every distance polluted and nonpolluted nucleation rate [1/cm^3s]'
+plot for [year in "2004"] for [i = 1:8] comData(i, year)  @udm1 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted nucleation rate [1/cm^3s]'
+plot for [year in "2005"] for [i = 1:8] comData(i, year)  @udm1 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted nucleation rate [1/cm^3s]'
+plot for [year in "2006"] for [i = 1:8] comData(i, year)  @udm1 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted nucleation rate [1/cm^3s]"
+   plot for [year in "2004 2005 2006"] comData(i, year) @udm1 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+
+####################################
+# number of sulfuric acid molecules#
+# in the critical cluster          #
+####################################
+
+set yrange [-5*10**(-3):6*10**(-3)]
+ set autoscale
+####################################是否污染不变
+set ylabel 'number of sulfuric acid molecules in the critical cluster'
+set title 'every year every distance polluted number of sulfuric acid molecules in the critical cluster'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @udm2 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################年份不变
+set title '2004 every distance polluted and nonpolluted number of sulfuric acid molecules in the critical cluster'
+plot for [year in "2004"] for [i = 1:8] comData(i, year)  @udm2 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted number of sulfuric acid molecules in the critical cluster'
+plot for [year in "2005"] for [i = 1:8] comData(i, year)  @udm2 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted number of sulfuric acid molecules in the critical cluster'
+plot for [year in "2006"] for [i = 1:8] comData(i, year)  @udm2 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted number of sulfuric acid molecules in the critical cluster"
+   plot for [year in "2004 2005 2006"] comData(i, year) @udm2 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+
+####################################
+# radius of the critial cluster    #
+# core                             #
+####################################
+####################################是否污染不变
+set ylabel 'radius of the critical cluster core [m]'
+set title 'every year every distance polluted radius of the critical cluster core [m]'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @udm3 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################年份不变
+set title '2004 every distance polluted and nonpolluted radius of the critical cluster core [m]'
+plot for [year in "2004"] for [i = 1:8] comData(i, year)  @udm3 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted radius of the critical cluster core [m]'
+plot for [year in "2005"] for [i = 1:8] comData(i, year)  @udm3 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted radius of the critical cluster core [m]'
+plot for [year in "2006"] for [i = 1:8] comData(i, year)  @udm3 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted radius of the critical cluster core [m]"
+   plot for [year in "2004 2005 2006"] comData(i, year) @udm3 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+
+####################################
+# number of molecules in the       #
+# critical cluster                 #
+####################################
+####################################是否污染不变
+set ylabel 'number of molecules in the critical cluster'
+set title 'every year every distance polluted number of molecules in the critical cluster'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @udm4 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################年份不变
+set title '2004 every distance polluted and nonpolluted number of molecules in the critical cluster'
+plot for [year in "2004"] for [i = 1:8] comData(i, year)  @udm4 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted number of molecules in the critical cluster'
+plot for [year in "2005"] for [i = 1:8] comData(i, year)  @udm4 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted number of molecules in the critical cluster'
+plot for [year in "2006"] for [i = 1:8] comData(i, year)  @udm4 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted number of molecules in the critical cluster"
+   plot for [year in "2004 2005 2006"] comData(i, year) @udm4 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+
+
+####################################
+# standard deviation               #
+#                                  #
+####################################
+####################################是否污染不变
+set ylabel 'standard deviation'
+set title 'every year every distance polluted standard deviation'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @udm5 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+################################年份不变
+set title '2004 every distance polluted and nonpolluted standard deviation'
+plot for [year in "2004"] for [i = 1:8] comData(i, year)  @udm5 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted standard deviation'
+plot for [year in "2005"] for [i = 1:8] comData(i, year)  @udm5 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted standard deviation'
+plot for [year in "2006"] for [i = 1:8] comData(i, year)  @udm5 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted standard deviation"
+   plot for [year in "2004 2005 2006"] comData(i, year) @udm5 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+####################################
+# volume average particle diameter #
+#                                  #
+####################################
+####################################是否污染不变
+set ylabel 'volume average particle diameter'
+set title 'every year every distance polluted volume average particle diameter'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @udm6 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################年份不变
+set title '2004 every distance polluted and nonpolluted volume average particle diameter'
+plot for [year in "2004"] for [i = 1:8] comData(i, year)  @udm6 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted volume average particle diameter'
+plot for [year in "2005"] for [i = 1:8] comData(i, year)  @udm6 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted volume average particle diameter'
+plot for [year in "2006"] for [i = 1:8] comData(i, year)  @udm6 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted volume average particle diameter"
+   plot for [year in "2004 2005 2006"] comData(i, year) @udm6 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+####################################
+# aerosol surface area             #
+#                                  #
+####################################
+####################################是否污染不变
+set ylabel 'aerosol surface area'
+set title 'every year every distance polluted aerosol surface area'
+plot for [year in "2004 2005 2006"] for [i = 1:8] comData(i, year) @udm7 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################年份不变
+set title '2004 every distance polluted and nonpolluted aerosol surface area'
+plot for [year in "2004"] for [i = 1:8] comData(i, year)  @udm7 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2005 every distance polluted and nonpolluted aerosol surface area'
+plot for [year in "2005"] for [i = 1:8] comData(i, year)  @udm7 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+set title '2006 every distance polluted and nonpolluted aerosol surface area'
+plot for [year in "2006"] for [i = 1:8] comData(i, year)  @udm7 with linespoint pn 5 lt (abs(year)-2004)*8+i title year." ".distance[i]
+
+####################################x轴距离不变
+do for [i = 1:8] {
+   set title "every year ".distance[i]." polluted and nonpolluted aerosol surface area"
+   plot for [year in "2004 2005 2006"] comData(i, year) @udm7 with linespoint pn 5 lt (abs(year)-2003) title year." ".distance[i]
+}
+
+
+set output
+set terminal pop

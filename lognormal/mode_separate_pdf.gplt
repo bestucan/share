@@ -1,0 +1,140 @@
+set terminal pdfcairo enhanced color size 45cm, 30cm font "Verdana, 30"
+set output "pdf.pdf"
+
+# set key out vert
+# set key right top Left title 'Legend' box 3
+set key out top Left
+
+
+
+# set style function linespoints
+set linetype 1   lc rgb "dark-violet" lw 1.5 dt 1 pt 5  pn 5   # ps .7
+set linetype 2   lc rgb "black"       lw 1.5 dt 1 pt 7  pn 5   # ps .7
+set linetype 3   lc rgb "violet"      lw 1.5 dt 1 pt 9  pn 5   # ps .7
+set linetype 4   lc rgb "dark-red"    lw 1.5 dt 1 pt 11 pn 5   # ps .7
+set linetype 5   lc rgb "blue"        lw 1.5 dt 1 pt 13 pn 5   # ps .7
+set linetype 6   lc rgb "dark-orange" lw 1.5 dt 1 pt 15 pn 5   # ps .7
+set linetype 7   lc rgb "sea-green"   lw 1.5 dt 1 pt 5  pn 5   # ps .7
+set linetype 8   lc rgb "goldenrod"   lw 1.5 dt 1 pt 7  pn 5   # ps .7
+set linetype 9   lc rgb "orchid"      lw 1.5 dt 1 pt 9  pn 5   # ps .7
+set linetype 10  lc rgb "dark-yellow" lw 1.5 dt 1 pt 11 pn 5   # ps .7
+set linetype 11  lc rgb "dark-violet" lw 1.5 dt 1 pt 13 pn 5   # ps .7
+set linetype 12  lc rgb "black"       lw 1.5 dt 1 pt 15 pn 5   # ps .7
+set linetype 13  lc rgb "violet"      lw 1.5 dt 1 pt 5  pn 5   # ps .7
+set linetype 14  lc rgb "dark-red"    lw 1.5 dt 1 pt 7  pn 5   # ps .7
+set linetype 15  lc rgb "blue"        lw 1.5 dt 1 pt 9  pn 5   # ps .7
+set linetype 16  lc rgb "dark-orange" lw 1.5 dt 1 pt 11 pn 5   # ps .7
+set linetype 17  lc rgb "sea-green"   lw 1.5 dt 1 pt 13 pn 5   # ps .7
+set linetype 18  lc rgb "goldenrod"   lw 1.5 dt 1 pt 15 pn 5   # ps .7
+set linetype 19  lc rgb "orchid"      lw 1.5 dt 1 pt 5  pn 5   # ps .7
+set linetype 20  lc rgb "dark-yellow" lw 1.5 dt 1 pt 7  pn 5   # ps .7
+set linetype 21  lc rgb "dark-violet" lw 1.5 dt 1 pt 9  pn 5   # ps .7
+set linetype 22  lc rgb "black"       lw 1.5 dt 1 pt 11 pn 5   # ps .7
+set linetype 23  lc rgb "violet"      lw 1.5 dt 1 pt 13 pn 5   # ps .7
+set linetype 24  lc rgb "dark-red"    lw 1.5 dt 1 pt 15 pn 5   # ps .7
+
+
+set linetype 101 lc rgb "dark-violet" lw 1.5 dt 2 pt 4  pn 5   # ps .7
+set linetype 102 lc rgb "black"       lw 1.5 dt 2 pt 6  pn 5   # ps .7
+set linetype 103 lc rgb "violet"      lw 1.5 dt 2 pt 8  pn 5   # ps .7
+set linetype 104 lc rgb "dark-red"    lw 1.5 dt 2 pt 10 pn 5   # ps .7
+set linetype 105 lc rgb "blue"        lw 1.5 dt 2 pt 12 pn 5   # ps .7
+set linetype 106 lc rgb "dark-orange" lw 1.5 dt 2 pt 14 pn 5   # ps .7
+set linetype 107 lc rgb "sea-green"   lw 1.5 dt 2 pt 4  pn 5   # ps .7
+set linetype 108 lc rgb "goldenrod"   lw 1.5 dt 2 pt 6  pn 5   # ps .7
+set linetype 109 lc rgb "orchid"      lw 1.5 dt 2 pt 8  pn 5   # ps .7
+set linetype 110 lc rgb "dark-yellow" lw 1.5 dt 2 pt 10 pn 5   # ps .7
+set linetype 111 lc rgb "dark-violet" lw 1.5 dt 2 pt 12 pn 5   # ps .7
+set linetype 112 lc rgb "black"       lw 1.5 dt 2 pt 14 pn 5   # ps .7
+set linetype 113 lc rgb "violet"      lw 1.5 dt 2 pt 4  pn 5   # ps .7
+set linetype 114 lc rgb "dark-red"    lw 1.5 dt 2 pt 6  pn 5   # ps .7
+set linetype 115 lc rgb "blue"        lw 1.5 dt 2 pt 8  pn 5   # ps .7
+set linetype 116 lc rgb "dark-orange" lw 1.5 dt 2 pt 10 pn 5   # ps .7
+set linetype 117 lc rgb "sea-green"   lw 1.5 dt 2 pt 12 pn 5   # ps .7
+set linetype 118 lc rgb "goldenrod"   lw 1.5 dt 2 pt 14 pn 5   # ps .7
+set linetype 119 lc rgb "orchid"      lw 1.5 dt 2 pt 4  pn 5   # ps .7
+set linetype 120 lc rgb "dark-yellow" lw 1.5 dt 2 pt 6  pn 5   # ps .7
+set linetype 121 lc rgb "dark-violet" lw 1.5 dt 2 pt 8  pn 5   # ps .7
+set linetype 122 lc rgb "black"       lw 1.5 dt 2 pt 10 pn 5   # ps .7
+set linetype 123 lc rgb "violet"      lw 1.5 dt 2 pt 12 pn 5   # ps .7
+set linetype 124 lc rgb "dark-red"    lw 1.5 dt 2 pt 14 pn 5   # ps .7
+
+array sigma_g[3*6]=[1.80, 1.87, 1.70,\
+      		    1.90, 1.93, 1.58,\
+		    2.00, 2.00, 1.71,\
+		    2.00, 1.99, 1.59,\
+		    1.92, 2.00, 1.64,\
+		    1.89, 1.96, 1.54]
+
+
+array vg[3*6]=[1.949816e-24, 1.153744e-22, 4.188790e-21,\
+               2.572441e-24, 2.772325e-22, 7.700109e-21,\
+               1.563458e-24, 1.069903e-22, 2.758331e-21,\
+               3.053628e-24, 2.280375e-22, 8.279799e-21,\
+               1.531111e-24, 1.235845e-22, 5.964117e-21,\
+               3.423919e-24, 3.170368e-22, 7.700109e-21]
+
+
+array parMod[3] = ["acc", "nuc", "ait"]
+
+array clean[2] = ["po", "no"]
+
+
+
+# sigma = wg = 3ln(sigma g)
+# mu = ln(vg)
+
+sigma = 3 * log(sigma_g[1])
+mu = log(vg[1])
+
+invsqrt2pi = 0.398942280401433
+lognormal(x) = invsqrt2pi / sigma / x * exp(-0.5 * ((log(x) - mu) / sigma)**2)
+
+####################################range#######################################
+m = exp(mu + 0.5 * sigma**2)
+s = sqrt(exp(2.0 * mu + sigma**2) * (2.0 * exp(sigma) - 1.0))
+
+xmin = m - 6**160 * s
+xmin = xmin < 0 ? 0 : xmin
+xmax = m + 0.1 * s
+ymax = 1.1 * lognormal(exp(mu - sigma**2))
+
+# set xrange [xmin: xmax]
+# set yrange [0: ymax]
+
+# set xrange [xmin: xmax]
+# set yrange [0: 4*10**(20)]
+
+# set xrange [xmin-10**(-24): xmax-4*10**(-22)]
+# set yrange [0: 1.7*10**(22)]
+
+#set xrange [xmin-10**(-25): xmax]
+#set yrange [0: 1.1*10**(24)]
+
+set xrange [10**(-36): 10**(-13)]
+set yrange [0: 10**(25)]
+
+################################################################################
+
+
+set format y '%.1e'
+set format x '%.1e'
+
+set logscale y
+set logscale x
+
+#set autoscale
+
+set sample 10000
+
+set xlabel "x ->"
+set ylabel "probability density ->"
+
+set title '2004 polluted and nonpolluted PDF'
+plot for [i = 1 :6 ] sigma = 3 * log(sigma_g[i]), mu = log(vg[i]), lognormal(x) with linespoint pn 5 lt ((i-1)/3)*100+i title "2004"." ".clean[(i-1)/3+1]." ".parMod[i%3+1]
+
+set title '2004 polluted and nonpolluted PDF'
+plot for [i = 7 :12 ] sigma = 3 * log(sigma_g[i]), mu = log(vg[i]), lognormal(x) with linespoint pn 5 lt ((i-6-1)/3)*100+i title "2005"." ".clean[(i-7)/3+1]." ".parMod[i%3+1]
+
+set title '2004 polluted and nonpolluted PDF'
+plot for [i = 13 :18 ] sigma = 3 * log(sigma_g[i]), mu = log(vg[i]), lognormal(x) with linespoint pn 5 lt ((i-12-1)/3)*100+i title "2005"." ".clean[(i-13)/3+1]." ".parMod[i%3+1]
